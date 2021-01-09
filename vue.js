@@ -3,7 +3,6 @@ const App = {
     return {
       activeIndex: 0,
       showNav: true,
-      showNext: true,
       steps: [
         {
           title: 'Основы',
@@ -56,15 +55,16 @@ const App = {
     }
   },
   computed: {
+    textStep() {
+      return this.steps[this.activeIndex].text
+    },
     disabledPrev() {
       return this.activeIndex === 0
     },
-  },
-  watch: {
-    activeIndex(value) {
-      this.showNext = (this.steps.length - 1) !== value
+    showNext() {
+      return (this.steps.length - 1) !== this.activeIndex
     }
-  }
+  },
 }
 
 Vue.createApp(App).mount('#app')
