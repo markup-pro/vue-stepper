@@ -35,7 +35,9 @@ const App = {
       return this.activeIndex > idx ? 'done' : ''
     },
     prev() {
-      this.activeIndex -= 1
+      if (this.activeIndex > 0) {
+        this.activeIndex -= 1
+      }
     },
     next() {
       this.activeIndex += 1
